@@ -1,0 +1,22 @@
+#include <stdio.h>
+#include <stdbool.h>
+#include <stdlib.h>
+
+int* solution(int n, long long left, long long right) {
+    // return 값은 malloc 등 동적 할당을 사용해주세요. 할당 길이는 상황에 맞게 변경해주세요.
+    int* answer = (int*)malloc(sizeof(int)*(right-left+1));
+    long long int i;
+    
+    for (i=left; i<=right; i++)
+    {
+        if (i%n > i/n)  // i=2 , n=3 기준 2 > 0   _  i=3, n=3 기준  0 >1  _ i=4, n=3 기준 1>1 _ i=5,n=3기준 2>1
+        {
+            answer[i-left] = i%n+1; // answer[0] = 3; _ na _ na _ answer[3] = 3;
+        }
+        else
+        {
+            answer[i-left] = i/n+1;  // na _ answer[1] = 2;  _ answer[2] = 2; _ na
+        }
+    }
+    return answer;
+}
