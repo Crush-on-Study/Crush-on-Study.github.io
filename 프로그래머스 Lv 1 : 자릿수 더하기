@@ -1,0 +1,18 @@
+#include <stdio.h>
+#include <stdbool.h>
+#include <stdlib.h>
+
+int solution(int n) {
+    int answer = 0;
+    int *number = (int*)malloc(sizeof(int)*9);
+    int i,sum=0;
+    while (n>0)
+    {
+        number[i] = n%10;
+        n = n/10;
+        sum+=number[i];
+        answer = sum;
+        i++;
+    }
+    return answer;
+}
